@@ -1,0 +1,13 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: hashicorp/terraform
+    steps:
+      - checkout
+      - run:
+          name: init
+          command: terraform init terraform
+      - run:
+          name: apply
+          command: terraform apply -input=false -auto-approve terraform
